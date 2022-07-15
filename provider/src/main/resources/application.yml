@@ -4,3 +4,13 @@ server:
 spring:
   kafka:
     bootstrap-servers: localhost:8083
+  cloud:
+    stream:
+      binders:
+        binderName:
+          type: kafka
+      bindings:
+        broadcastGreetings:
+          destination: greetings-pub-sub
+        directGreetings:
+          destination: greetings-p2p

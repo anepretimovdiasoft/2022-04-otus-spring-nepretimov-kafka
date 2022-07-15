@@ -4,3 +4,16 @@ server:
 spring:
   kafka:
     bootstrap-servers: localhost:8083
+  cloud:
+    stream:
+      binders:
+        binderName:
+          type: kafka
+      bindings:
+        #Подписка на широковещательное сообщение (сообщение получают все подписчики)
+        broadcasts:
+          destination: greetings-pub-sub
+        #Подписка на сообщение Point-To-Point (сообщение получает один подписчик из группы)
+        directed:
+          destination: greetings-p2p
+          group: test-p2p-group
